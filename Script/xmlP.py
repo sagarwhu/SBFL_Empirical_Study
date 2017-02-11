@@ -14,29 +14,22 @@ try:
     print "Connected successfully"
 except:
     print "Unable to connect"
-# try:
-#     insert_query = """INSERT INTO Statement (statementNumber, statementHitNumber, testcaseID) VALUES (4,1,4)""")
-#     cursor.execute(insert_query)
-#     connection.commit();
-# except:
-#     print "problem found"
-# connection.close()
 
 
 
-doc = minidom.parse("tc4_S.xml")
+doc = minidom.parse("tc7_F.xml")
 
 # doc.getElementsByTagName returns NodeList
-testcaseID = 4
+testcaseID = 7
 linesNumber = doc.getElementsByTagName("line")
 for linesNumberofStatement in linesNumber:
         hitsofEachStatement = linesNumberofStatement.getAttribute("hits")
         statementNumber = linesNumberofStatement.getAttribute("number")
         print("Statement Number:%s, Hit:%s" %
               (statementNumber, hitsofEachStatement))
-        # try:
-        #     insert_query = ("INSERT INTO Statement (statementNumber, statementHitNumber, testcaseID) VALUES (%s,%s,%s)", (statementNumber,hitsofEachStatement,testcaseID))
-        #     cursor.execute(insert_query)
-        #     connection.commit();
-        # except:
-        #     print "problem found"
+        try:
+            insert_query = "INSERT INTO Statement (statementNumber, statementHitNumber, testcaseID) VALUES (%s,%s,%s)"
+            cursor.execute(insert_query, (statementNumber,hitsofEachStatement,testcaseID))
+            connection.commit();
+        except:
+            print "problem found"
