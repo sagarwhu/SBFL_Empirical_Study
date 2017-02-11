@@ -44,7 +44,8 @@ WHERE Statement.statementHitNumber =1 GROUP BY statementNumber
 
 SELECT COUNT(statementHitNumber) total, statementNumber FROM Statement 
 WHERE Statement.statementHitNumber =0 GROUP BY statementNumber
-
+=====
+Main query for selecting passed testcases for specific statement:
 SELECT COUNT(statementHitNumber) total, statementNumber FROM Statement 
 WHERE Statement.statementHitNumber >=1 AND Statement.statementNumber = 18 GROUP BY statementNumber
 
